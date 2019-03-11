@@ -4,6 +4,22 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <title>Bugout tutorial chat</title>
+  <script src="https://chr15m.github.io/bugout/bugout.min.js" type="application/javascript"></script>
 </head>
-<body>Hello world!</body>
+<body>
+<pre id="log">Hello world!
+</pre>
+</body>
+<script>
+var b = Bugout();
+log(b.address());
+
+function log(message) {
+  document.getElementById("log").textContent += message + "\n";
+}
+</script>
+<style>
+  body { background-color: #333; }
+  pre { color: #def; white-space: pre-wrap; word-wrap: break-word; text-shadow: 0 0 5px #fff; }
+</style>
 </html>
