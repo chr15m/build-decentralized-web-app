@@ -3,23 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1" name="viewport">
-  <title>Bugout tutorial chat</title>
-  <script src="https://chr15m.github.io/bugout/bugout.min.js" type="application/javascript"></script>
+  <title>Bugout chat tutorial</title>
+  <style>
+    body { background-color: #333; font-size: 1.5em; padding: 0em 0.25em; }
+    pre { color: #fff; white-space: pre-wrap; word-wrap: break-word; text-shadow: 0 0 10px #ccc; }
+  </style>
+  <script>
+    function log(message) {
+      document.getElementById("log").textContent += message + "\n";
+    }
+  </script>
 </head>
-<body>
-<pre id="log">Hello world!
-</pre>
-</body>
+<body><pre id="log"></pre></body>
 <script>
-var b = Bugout();
-log(b.address());
+  log("Hello world!");
 
-function log(message) {
-  document.getElementById("log").textContent += message + "\n";
-}
+  /*** Your code goes here! ***/
+
 </script>
-<style>
-  body { background-color: #333; }
-  pre { color: #def; white-space: pre-wrap; word-wrap: break-word; text-shadow: 0 0 5px #fff; }
-</style>
 </html>
