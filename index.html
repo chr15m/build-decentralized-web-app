@@ -23,5 +23,8 @@
   var b = Bugout();
   log(b.address());
 
+  var b = Bugout("bugout-chat-tutorial");
+  b.on("seen", function(pk) { log(pk + " [ seen ]"); });
+
 </script>
 </html>

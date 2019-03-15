@@ -72,4 +72,23 @@ Now when you hit reload you should see "Hello world!" like before and on the nex
 
 You might notice this address looks a bit like a Bitcoin address. That's because Bugout uses a similar type of cryptographic technique to create its address from an internal cryptographic keypair. Cryptography is how Bugout nodes can be sure they are receiving information from the node they think they are receiving it from. On the network Bugout nodes can find and identify eachother using these addresses.
 
+### Connect your Bugout instance
+
+Now that we have a Bugout instance running in our web page, how do we connect it to other Bugout instances running in pages on other people's computers?
+
+In real life when you want to meet up with somebody you share the address of the place to meet. Computers are the same. Any time you want to connect two computer programs together over a network you need some type of address. For example to get to this web page you followed a link to it's URL, and your computer loaded this page from that address.
+
+Bugout instances connect to addresses called "identifiers" which you can think of as room names. The first argument passed to the `Bugout()` instance is the identifier or room name that you want it to connect to.
+
+If you don't supply a room name argument the Bugout instance will connect to it's own `.address()` by default. That means it will listen out for other Bugout instances connecting back to it. Other instances can connect by passing your Bugout instance's `.address()` in as their first argument.
+
+For our chat room we want to connect all the Bugout instances together in one room. We do that by using the same room name as the first argument.
+
+Update the code to pass an argument `"bugout-chat-tutorial"` as the room name. We'll also install an event handler which will fire every time we see another Bugout instance connecting to the same room using `b.on("seen")`.
+```javascript
+var b = Bugout("bugout-chat-tutorial");
+b.on("seen", function(pk) { log(pk + " [ seen ]"); });
+```
+
+When you refresh the page now you may see other Bugout instances connecting - those are other people doing this same tutorial! You can open the index.html in another tab or browser and after a few seconds in both windows you should see the Bugout instances discover eachother and output `...address... [ seen ]`.
 
