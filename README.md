@@ -47,3 +47,29 @@ You should see the words "Hello world!" in white text at the top of the screen.
 
 Great, we are up and running with a basic web page and a `log()` function which will print text on the screen.
 
+### Import Bugout
+
+Now let's get the [Bugout](https://chr15m/bugout) library imported so we can use it to connect peoples' browsers together in a peer-to-peer style. We'll load the library directly from its GitHub page.
+
+Add this `<script>` tag into the `<head>` section of the HTML just before the closing tag:
+
+```html
+<script src="https://chr15m.github.io/bugout/bugout.min.js" type="application/javascript"></script>
+```
+
+Save your `index.html` file again and hit refresh in the browser. If you know [how to use the developer console](https://www.digitalocean.com/community/tutorials/how-to-use-the-javascript-developer-console) you can check the network tab to verify the `bugout.min.js` file getting loaded in. If you don't, don't worry just skip this step and move on.
+
+### Make a Bugout object
+
+Let's make a Bugout object that we can use to talk to other browsers. Add the following code at the end of the file in the script tag after it says "Your code goes here!":
+
+```javascript
+var b = Bugout();
+log(b.address());
+```
+
+Now when you hit reload you should see "Hello world!" like before and on the next line you should see the address of this Bugout instance. It will look something like this: `bKpdPiLJjPmwrYWoZYXVWbJFcEMUpfh6BN`.
+
+You might notice this address looks a bit like a Bitcoin address. That's because Bugout uses a similar type of cryptographic technique to create its address from an internal cryptographic keypair. Cryptography is how Bugout nodes can be sure they are receiving information from the node they think they are receiving it from. On the network Bugout nodes can find and identify eachother using these addresses.
+
+

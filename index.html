@@ -13,12 +13,15 @@
       document.getElementById("log").textContent += message + "\n";
     }
   </script>
+  <script src="https://chr15m.github.io/bugout/bugout.min.js" type="application/javascript"></script>
 </head>
 <body><pre id="log"></pre></body>
 <script>
   log("Hello world!");
 
   /*** Your code goes here! ***/
+  var b = Bugout();
+  log(b.address());
 
 </script>
 </html>
