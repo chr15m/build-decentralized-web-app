@@ -4,6 +4,9 @@ In this 15 minute tutorial we're going to build a simple decentralized chat appl
 
 All you will need is a **text editor**, a **web browser**, and a **basic knowledge of how to save HTML** files and open them in the browser.
 
+
+![Diagram of how WebRTC works browser to browser](./webrtc-browser-to-browser.svg)
+
 We're going to use [Bugout](https://chr15m/bugout), a JavaScript library that takes care of the peer-to-peer networking and cryptography.
 
  * If you just want the files, download [index.html](./index.html) in this repo.
