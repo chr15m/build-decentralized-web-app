@@ -24,13 +24,10 @@
 <script>
   log("Hello world!");
 
-  /*** Your code goes here! ***/
-  var b = Bugout();
-  log(b.address() + " [ me ]");
-
   var b = Bugout("bugout-chat-tutorial");
-  b.on("seen", function(pk) { log(pk + " [ seen ]"); });
-
+  b.on("seen", function(address) { log(address + " [ seen ]"); });
+  log(b.address() + " [ me ]");
+  
   b.on("message", function(address, message) {
     log(address + ": " + message);
   });
@@ -44,5 +41,6 @@
       ev.preventDefault();
     }
   }
+
 </script>
 </html>
