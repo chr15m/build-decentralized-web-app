@@ -64,8 +64,8 @@ Save your `index.html` file again and hit refresh in the browser. If you know [h
 Let's make a Bugout object that we can use to talk to other browsers. Add the following code at the end of the file in the script tag after it says "Your code goes here!":
 
 ```javascript
-var b = Bugout();
-log(b.address());
+  var b = Bugout();
+  log(b.address() + " [ me ]");
 ```
 
 Now when you hit reload you should see "Hello world!" like before and on the next line you should see the address of this Bugout instance. It will look something like this: `bKpdPiLJjPmwrYWoZYXVWbJFcEMUpfh6BN`.
@@ -85,10 +85,89 @@ If you don't supply a room name argument the Bugout instance will connect to it'
 For our chat room we want to connect all the Bugout instances together in one room. We do that by using the same room name as the first argument.
 
 Update the code to pass an argument `"bugout-chat-tutorial"` as the room name. We'll also install an event handler which will fire every time we see another Bugout instance connecting to the same room using `b.on("seen")`.
+
 ```javascript
 var b = Bugout("bugout-chat-tutorial");
-b.on("seen", function(pk) { log(pk + " [ seen ]"); });
+b.on("seen", function(address) { log(address + " [ seen ]"); });
 ```
 
-When you refresh the page now you may see other Bugout instances connecting - those are other people doing this same tutorial! You can open the index.html in another tab or browser and after a few seconds in both windows you should see the Bugout instances discover eachother and output `...address... [ seen ]`.
+When you refresh the page now you may see other Bugout instances connecting - those are other people doing this same tutorial! You can open the index.html in another tab or browser and after a few seconds in both windows you should see the two Bugout instances discover eachother and output `...address... [ seen ]`.
 
+### Receiving messages
+
+Now that we have Bugout instances connecting we can send data between them. Let's handle receiving messages first. When our Bugout instance receives a message we want to add it straight to the log so we can see what people are sending to the room.
+
+Add this snippet of JavaScript below the Bugout instantiation code you added before:
+
+```javascript
+b.on("message", function(address, message) {
+  log(address + ": " + message);
+});
+```
+
+This code will log every message our Bugout instance receives with the address of the sender.
+
+If you refresh the page at this point you may start to see messages coming in from anybody else who has done this tutorial and is sending messages since you are using the same room identifier.
+
+### Sending messages
+
+Sending a message is just as easy. We can use `b.send("Hello world!");` to send a message to the room or `b.send(address, "Hello you.");` to send to a specific Bugout instance. If you use the second method the transmission will be encrypted with a key supplied by the receiving instance (if they are online).
+
+But before we add the sending functionality we need a way for users to type in the messages they want to send, so let's take a little user-interface detour.
+
+### Get user input
+
+We need some kind of input for users to type messages they want to send.
+
+First create an input they can type into. Add the following tag just below the `<pre id="log">` tag:
+
+```html
+  <pre id="input" contenteditable="true"></pre>
+```
+
+Now add some styling to make it clear this is an input that the user can type into. Add this to the `<style>` section of the header:
+
+```css
+    #input { border-bottom: 1px solid #ccc; background-color: #383838; padding: 0.25em; outline: 0; }
+    #input::before { content: "> "; }
+```
+
+Finally, we can hook this all up. We'll add an event handler which will send the message the user has typed as soon as they hit the enter key. Add this to the last script tag, below the message event code you added a couple of steps ago:
+
+```javascript
+  document.getElementById("input").onkeydown = function(ev) {
+    if (ev.keyCode == 13) {
+      if (b.lastwirecount) {
+        b.send(ev.target.textContent);
+        ev.target.textContent = "";
+      }
+      ev.preventDefault();
+    }
+  }
+```
+
+There's a couple of extra things to note here. We're checking for key code 13 (the enter key) and we're also checking `lastwirecount` to make sure we only send a message once we have another Bugout instance to send to.
+
+So that's it, our super minimal decentralized chat client is done. Hit refresh and once you see another node connect you can start chatting. Enjoy!
+
+### Go further
+
+You can find out more info about Bugout methods, events, and properties in [the API documentation](https://github.com/chr15m/bugout/blob/master/docs/API.md).
+
+Astute readers will have some questions at this point.
+
+ * Isn't WebRTC signalling still centralized?
+ * What happens to the messages when somebody goes offline?
+ * How can do we handle identities when there's no central server?
+
+For some possible solutions to the last question you can check my post on [decentralized identity linking](https://chr15m.github.io/decentralized-identity-linking.html).
+
+I'm actively working on the first two questions. If you want to keep up with what I'm building you can find out more here:
+
+ * [Subscribe to my newsletter](https://mccormick.cx/subscribe)
+ * [Follow me on Twitter at @mccrmx](https://twitter.com/mccrmx)
+ * [Send me an email](mailto:chris@mccormick.cx?subject=Bugout)
+
+I would love to hear from you about the decentralized things you are building too.
+
+/* Read more posts on the subject of decentralized systems and cryptography. */

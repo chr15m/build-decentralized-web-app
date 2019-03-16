@@ -7,6 +7,8 @@
   <style>
     body { background-color: #333; font-size: 1.5em; padding: 0em 0.25em; }
     pre { color: #fff; white-space: pre-wrap; word-wrap: break-word; text-shadow: 0 0 10px #ccc; }
+    #input { border-bottom: 1px solid #ccc; background-color: #383838; padding: 0.25em; outline: 0; }
+    #input::before { content: "> "; }
   </style>
   <script>
     function log(message) {
@@ -15,16 +17,32 @@
   </script>
   <script src="https://chr15m.github.io/bugout/bugout.min.js" type="application/javascript"></script>
 </head>
-<body><pre id="log"></pre></body>
+<body>
+  <pre id="log"></pre>
+  <pre id="input" contenteditable="true"></pre>
+</body>
 <script>
   log("Hello world!");
 
   /*** Your code goes here! ***/
   var b = Bugout();
-  log(b.address());
+  log(b.address() + " [ me ]");
 
   var b = Bugout("bugout-chat-tutorial");
   b.on("seen", function(pk) { log(pk + " [ seen ]"); });
 
+  b.on("message", function(address, message) {
+    log(address + ": " + message);
+  });
+
+  document.getElementById("input").onkeydown = function(ev) {
+    if (ev.keyCode == 13) {
+      if (b.lastwirecount) {
+        b.send(ev.target.textContent);
+        ev.target.textContent = "";
+      }
+      ev.preventDefault();
+    }
+  }
 </script>
 </html>
