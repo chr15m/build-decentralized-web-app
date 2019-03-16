@@ -166,6 +166,7 @@ If this tutorial was useful and you want to know more about the decentralized st
  * [Subscribe to my newsletter](https://mccormick.cx/subscribe)
  * [Follow me on Twitter at @mccrmx](https://twitter.com/mccrmx)
  * [Send me an email](mailto:chris@mccormick.cx?subject=Bugout)
+ * [Follow the cryptography/decentralization tag on my blog](https://chr15m.github.io/tag/cryptography.html)
 
 ### Find out more
 
@@ -186,5 +187,3 @@ For some possible solutions to the last question you can check my post on [decen
 I'm actively working on the first two questions. If you want to find out more and keep up with what I'm building you can find me at the links above.
 
 I would love to hear from you about the decentralized things you are building too!
-
-/* Read more posts on the subject of decentralized systems and cryptography. */
