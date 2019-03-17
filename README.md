@@ -165,7 +165,7 @@ If this tutorial was useful and you want to know more about the decentralized st
 
  * [Subscribe to my newsletter](https://mccormick.cx/subscribe)
  * [Follow me on Twitter at @mccrmx](https://twitter.com/mccrmx)
- * [Send me an email](mailto:chris@mccormick.cx?subject=Bugout)
+ * [Send me an email](mailto:chris@mccormick.cx?subject=Bugout) (I freelance too)
  * [Follow the cryptography/decentralization tag on my blog](https://chr15m.github.io/tag/cryptography.html)
 
 ### Find out more
