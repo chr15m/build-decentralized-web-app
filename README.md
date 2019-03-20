@@ -52,7 +52,7 @@ Go ahead and save the snippet above into a file called `index.html` and then ope
 
 You should see the words "Hello world!" in white text at the top of the screen.
 
-![Screenshot of hello world](./screenshot-2.png)
+![Screenshot of hello world](./screenshots/screenshot-2.png)
 
 Great, we are up and running with a basic web page and a `log()` function which will print text on the screen.
 
@@ -68,7 +68,7 @@ Add this `<script>` tag into the `<head>` section of the HTML just before the cl
 
 Save your `index.html` file again and hit refresh in the browser. If you know [how to use the developer console](https://www.digitalocean.com/community/tutorials/how-to-use-the-javascript-developer-console) you can check the network tab to verify the `bugout.min.js` file getting loaded in. If you don't, don't worry just skip this step and move on.
 
-![Screenshot of library loading](./screenshot-3.png)
+![Screenshot of library loading](./screenshots/screenshot-3.png)
 
 ### Make a Bugout object
 
@@ -81,7 +81,7 @@ Let's make a Bugout object that we can use to talk to other browsers. Add the fo
 
 Now when you hit reload you should see "Hello world!" like before and on the next line you should see the address of this Bugout instance. It will look something like this: `bKpdPiLJjPmwrYWoZYXVWbJFcEMUpfh6BN [ me ]`.
 
-![Screenshot of Bugout address](./screenshot-4.png)
+![Screenshot of Bugout address](./screenshots/screenshot-4.png)
 
 You might notice this address looks a bit like a Bitcoin address. That's because Bugout uses a similar type of cryptographic technique to create its address from an internal cryptographic keypair. Cryptography is how Bugout nodes can be sure they are receiving information from the node they think they are receiving it from. On the network Bugout nodes can find and identify eachother using these addresses.
 
@@ -108,7 +108,7 @@ b.on("seen", function(address) { log(address + " [ seen ]"); });
 
 When you refresh the page now you may see other Bugout instances connecting - those are other people doing this same tutorial! You can open the `index.html` in another tab or browser and after a few seconds in both windows you should see the two Bugout instances discover eachother and output `...ADDRESS... [ seen ]` with eachother's address.
 
-![Screenshot of seeing other instances](./screenshot-5.png)
+![Screenshot of seeing other instances](./screenshots/screenshot-5.png)
 
 ### Receiving messages
 
@@ -126,7 +126,7 @@ This code will log every message our Bugout instance receives with the address o
 
 If you refresh the page at this point you may start to see messages coming in from anybody else who has done this tutorial and is sending messages since you are in the same room called `"bugout-chat-tutorial"`.
 
-![Screenshot of seeing messages](./screenshot-6.png)
+![Screenshot of seeing messages](./screenshots/screenshot-6.png)
 
 ### Sending messages
 
@@ -169,7 +169,7 @@ There's a couple of extra things to note here. We're checking for key code 13 (t
 
 Refresh again and once you see the `[ seen ]` messages you can start typing messages between the windows. You might even see messages coming from other people doing this tutorial.
 
-![Screenshot of final product](./screenshot.png)
+![Screenshot of final product](./screenshots/screenshot.png)
 
 So that's it, our super minimal decentralized chat client is done. Enjoy!
 
