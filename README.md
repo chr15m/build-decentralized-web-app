@@ -52,6 +52,8 @@ Go ahead and save the snippet above into a file called `index.html` and then ope
 
 You should see the words "Hello world!" in white text at the top of the screen.
 
+![Screenshot of hello world](./screenshot-2.png)
+
 Great, we are up and running with a basic web page and a `log()` function which will print text on the screen.
 
 ### Import Bugout
@@ -66,6 +68,8 @@ Add this `<script>` tag into the `<head>` section of the HTML just before the cl
 
 Save your `index.html` file again and hit refresh in the browser. If you know [how to use the developer console](https://www.digitalocean.com/community/tutorials/how-to-use-the-javascript-developer-console) you can check the network tab to verify the `bugout.min.js` file getting loaded in. If you don't, don't worry just skip this step and move on.
 
+![Screenshot of library loading](./screenshot-3.png)
+
 ### Make a Bugout object
 
 Let's make a Bugout object that we can use to talk to other browsers. Add the following code at the end of the file in the script tag after it says "Your code goes here!":
@@ -76,6 +80,8 @@ Let's make a Bugout object that we can use to talk to other browsers. Add the fo
 ```
 
 Now when you hit reload you should see "Hello world!" like before and on the next line you should see the address of this Bugout instance. It will look something like this: `bKpdPiLJjPmwrYWoZYXVWbJFcEMUpfh6BN [ me ]`.
+
+![Screenshot of Bugout address](./screenshot-4.png)
 
 You might notice this address looks a bit like a Bitcoin address. That's because Bugout uses a similar type of cryptographic technique to create its address from an internal cryptographic keypair. Cryptography is how Bugout nodes can be sure they are receiving information from the node they think they are receiving it from. On the network Bugout nodes can find and identify eachother using these addresses.
 
@@ -102,6 +108,8 @@ b.on("seen", function(address) { log(address + " [ seen ]"); });
 
 When you refresh the page now you may see other Bugout instances connecting - those are other people doing this same tutorial! You can open the `index.html` in another tab or browser and after a few seconds in both windows you should see the two Bugout instances discover eachother and output `...ADDRESS... [ seen ]` with eachother's address.
 
+![Screenshot of seeing other instances](./screenshot-5.png)
+
 ### Receiving messages
 
 Now that we have Bugout instances connecting we can send data between them. Let's handle receiving messages first. When our Bugout instance receives a message we want to add it straight to the log so we can see what messages people are sending to the room.
@@ -117,6 +125,8 @@ b.on("message", function(address, message) {
 This code will log every message our Bugout instance receives with the address of the sender.
 
 If you refresh the page at this point you may start to see messages coming in from anybody else who has done this tutorial and is sending messages since you are in the same room called `"bugout-chat-tutorial"`.
+
+![Screenshot of seeing messages](./screenshot-6.png)
 
 ### Sending messages
 
@@ -159,6 +169,8 @@ There's a couple of extra things to note here. We're checking for key code 13 (t
 
 Refresh again and once you see the `[ seen ]` messages you can start typing messages between the windows. You might even see messages coming from other people doing this tutorial.
 
+![Screenshot of final product](./screenshot.png)
+
 So that's it, our super minimal decentralized chat client is done. Enjoy!
 
 If this tutorial was useful and you want to know more about the decentralized stuff I am building you can find me here:
@@ -173,6 +185,8 @@ If this tutorial was useful and you want to know more about the decentralized st
 You can find out more about [Bugout on the GitHub project page](https://github.com/chr15m/bugout). You can also `npm install` it if that's your thing.
 
 There is also [API documentation](https://github.com/chr15m/bugout/blob/master/docs/API.md) where you can look up all Bugout methods, events, and properties.
+
+If you want a more fleshed out decentralized web chat inspired by IRC then [check out dirc](https://chr15m.github.io/dirc).
 
 ### Go further
 
