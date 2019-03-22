@@ -58,7 +58,7 @@ Great, we are up and running with a basic web page and a `log()` function which 
 
 ### Import Bugout
 
-Now let's get the [Bugout](https://chr15m/bugout) library imported so we can use it to connect peoples' browsers together in a peer-to-peer style. We'll load the library directly from its GitHub page.
+Now let's get the [Bugout](https://github.com/chr15m/bugout) library imported so we can use it to connect peoples' browsers together in a peer-to-peer style. We'll load the library directly from its GitHub page.
 
 Add this `<script>` tag into the `<head>` section of the HTML just before the closing `</head>` tag:
 
