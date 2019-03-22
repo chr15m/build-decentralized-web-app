@@ -7,7 +7,7 @@ All you will need is a **text editor**, a **web browser**, and a **basic knowled
 
 ![Diagram of how WebRTC works browser to browser](./webrtc-browser-to-browser.svg)
 
-We're going to use [Bugout](https://chr15m/bugout), a JavaScript library that takes care of the peer-to-peer networking and cryptography.
+We're going to use [Bugout](https://github.com/chr15m/bugout), a JavaScript library that takes care of the peer-to-peer networking and cryptography.
 
  * If you just want the files, download [index.html](./index.html) in this repo.
 
